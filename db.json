@@ -1,0 +1,38 @@
+{
+  "posts": [
+    {
+      "title": "task1",
+      "author": "task1 add 1 update1",
+      "body": "In Progress",
+      "id": 1
+    },
+    {
+      "title": "bbfdb",
+      "author": "bdbdf",
+      "body": "In Progress",
+      "id": 3
+    },
+    {
+      "title": "deepak 3001",
+      "author": "wadikar patil",
+      "body": "Completed",
+      "id": 4
+    },
+    {
+      "title": "sdvsd",
+      "author": "sdsd",
+      "body": "In Progress",
+      "id": 5
+    },
+    {
+      "title": "sdkdsf",
+      "author": "fnjksdhjf",
+      "body": "In Progress",
+      "id": 6
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

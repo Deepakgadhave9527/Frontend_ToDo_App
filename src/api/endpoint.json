@@ -1,0 +1,13 @@
+{
+    "baseURL":"http://127.0.0.1:3003/api/v1",
+    "api":{
+        "todo":{
+            "create":"/todo/",
+            "update":"/todo/",
+            "delete":"/todo/",
+            "fetchOne":"/todo/",
+            "fetchAll":"/todo/"
+        }
+    }
+
+}
