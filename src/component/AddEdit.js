@@ -1,1 +1,2 @@
-const validatePost = (post) => {...};
+interface AddEditProps {...}
+const AddEdit: React.FC<AddEditProps> = ({ open, ... }) => {...}
