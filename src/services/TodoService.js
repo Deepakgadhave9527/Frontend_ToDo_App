@@ -1,1 +1,1 @@
-static createTask(task: Task): Promise<APIResponse> { ... }
+interface TodoDTO { ... } class TodoService { ... }
