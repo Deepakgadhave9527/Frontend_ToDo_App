@@ -1,2 +1,1 @@
-const classes = useStyles();
-const [post, setPost] = useState({});
+formatted code
