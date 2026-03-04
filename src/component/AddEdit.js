@@ -1,1 +1,1 @@
-formatted code
+const { validate } = useValidation();
