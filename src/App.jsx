@@ -1,0 +1,1 @@
+const [count, setCount] = useState(0); // refactored by AI
