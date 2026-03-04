@@ -1,1 +1,1 @@
-// refactored into custom hook
+const handleEdit = useCallback((post) => { ... }, [posts]); <span onClick={() => handleEdit(posts[dataIndex])}>
