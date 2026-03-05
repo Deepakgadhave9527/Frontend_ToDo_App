@@ -1,1 +1,2 @@
-const handleEdit = useCallback((post) => { ... }, [posts]); <span onClick={() => handleEdit(posts[dataIndex])}>
+const handleEdit = useCallback((post) => { ... }, [posts]);
+<span onClick={() => handleEdit(posts[dataIndex])}>
