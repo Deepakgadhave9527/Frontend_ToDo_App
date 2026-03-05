@@ -37,7 +37,7 @@ const PostForm = ({ open, handleClose, initialPost, opertion, loadPost, successM
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setPost({ ...post, [name]: value })
+        setPost({ ...post, [name]: sanitize(value) })
     }
 
 
@@ -246,7 +246,7 @@ export default AddEdit;
 
 //     const handleChange = (e) => {
 //         const { name, value } = e.target;
-//         setPost({ ...post, [name]: value })
+//         setPost({ ...post, [name]: sanitize(value) })
 //     }
 
 
