@@ -1,2 +1,1 @@
-interface AddEditProps { ... }
-const AddEdit: React.FC<AddEditProps> = ({ open, handleClose, ... }) => { ... }
+// formatted code
