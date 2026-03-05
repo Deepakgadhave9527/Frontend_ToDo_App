@@ -1,1 +1,2 @@
-// import { useValidation } from '../hooks/useValidation';
+interface AddEditProps { ... }
+const AddEdit: React.FC<AddEditProps> = ({ open, handleClose, ... }) => { ... }
