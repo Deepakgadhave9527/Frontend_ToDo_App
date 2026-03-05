@@ -57,7 +57,7 @@ const PostForm = ({ open, handleClose, initialPost, opertion, loadPost, successM
         if (post.author == "") {
             SetErrorMessageAuthor("Please Enter Description")
             return false
-        } else SetErrorMessageAuthor("")
+setPost({ ...post, [name]: sanitize(value) })
 
         if (post.body == "") {
             setErrorMessageStage("Please Enter stage")
