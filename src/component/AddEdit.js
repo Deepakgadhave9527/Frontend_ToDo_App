@@ -37,7 +37,7 @@ const PostForm = ({ open, handleClose, initialPost, opertion, loadPost, successM
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setPost({ ...post, [name]: value })
+        setPost({ ...post, [name]: sanitize(value) })
     }
 
 
@@ -57,7 +57,7 @@ const PostForm = ({ open, handleClose, initialPost, opertion, loadPost, successM
         if (post.author == "") {
             SetErrorMessageAuthor("Please Enter Description")
             return false
-        } else SetErrorMessageAuthor("")
+setPost({ ...post, [name]: sanitize(value) })
 
         if (post.body == "") {
             setErrorMessageStage("Please Enter stage")
@@ -246,7 +246,7 @@ export default AddEdit;
 
 //     const handleChange = (e) => {
 //         const { name, value } = e.target;
-//         setPost({ ...post, [name]: value })
+//         setPost({ ...post, [name]: sanitize(value) })
 //     }
 
 
