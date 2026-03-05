@@ -89,6 +89,7 @@ const PostList = () => {
                 // axios.delete(`http://localhost:3001/posts/${id}`).then((response) => 
 const handleEdit = useCallback((post) => { ... }, [posts]);
 <span onClick={() => handleEdit(posts[dataIndex])}>
+<span onClick={() => handleEdit(posts[dataIndex])}>
                 TodoService.deleteTask(id).then((response) => {
 
                     Swal.fire("Deleted!", "Your post has been deleted.", "success");
