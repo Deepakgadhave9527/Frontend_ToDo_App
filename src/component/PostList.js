@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MUIDataTable from "mui-datatables";
-import axios from "axios";
+
 import { Fab } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from "@material-ui/icons/Delete";
