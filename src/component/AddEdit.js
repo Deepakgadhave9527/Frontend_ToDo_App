@@ -1,1 +1,1 @@
-// formatted code
+const [post, setPost] = useState({})
