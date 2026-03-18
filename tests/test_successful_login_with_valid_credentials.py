@@ -1,62 +1,70 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
 
+# Test Data
+LOGIN_URL = "https://practicetestautomation.com/practice-test-login"
+DASHBOARD_URL = "https://practicetestautomation.com/logged-in-successfully"
+VALID_USERNAME = "testuser"
+VALID_PASSWORD = "Password123"
+
+
 @pytest.fixture(scope="function")
-def setup_browser():
+def browser():
     """
-    Setup the Chrome WebDriver.
+    Pytest fixture for setting up and tearing down the WebDriver instance.
     """
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-    driver.maximize_window()
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")  # Run in headless mode for CI/CD environments
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--window-size=1920,1080")
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     yield driver
     driver.quit()
 
 
-def test_successful_login_with_valid_credentials(setup_browser):
+def test_successful_login_with_valid_credentials(browser):
     """
-    Test Case: Successful Login with Valid Credentials (Web - Chrome)
+    Test case: Successful Login with Valid Credentials (Web - Chrome)
     """
-    driver = setup_browser
 
-    # Step 1: Open Chrome browser (Handled by WebDriver setup)
+    # Step 1: Open Chrome browser and navigate to the login page URL
+    browser.get(LOGIN_URL)
 
-    # Step 2: Navigate to the login page URL
-    login_url = "https://practicetestautomation.com/practice-test-login"
-    driver.get(login_url)
-
-    # Assertion: Verify login page is displayed
-    assert driver.current_url == login_url, "Login page URL mismatch"
-
-    # Step 3: Enter a valid email address in the email field
-    username_field = WebDriverWait(driver, 10).until(
+    # Wait until the login page is fully loaded
+    WebDriverWait(browser, 10).until(
         EC.presence_of_element_located((By.CSS_SELECTOR, "#username"))
     )
-    username_field.send_keys("valid_username")
 
-    # Step 4: Enter the correct password for the valid user in the password field
-    password_field = driver.find_element(By.CSS_SELECTOR, "#password")
-    password_field.send_keys("valid_password")
+    # Step 2: Enter a valid email address in the email field
+    username_field = browser.find_element(By.CSS_SELECTOR, "#username")
+    username_field.send_keys(VALID_USERNAME)
 
-    # Step 5: Click the login button
-    login_button = driver.find_element(By.CSS_SELECTOR, "#submit")
+    # Step 3: Enter the correct password for the valid user in the password field
+    password_field = browser.find_element(By.CSS_SELECTOR, "#password")
+    password_field.send_keys(VALID_PASSWORD)
+
+    # Step 4: Click the login button
+    login_button = browser.find_element(By.CSS_SELECTOR, "#submit")
     login_button.click()
 
-    # Step 6: Observe the page after clicking the login button
-    # Step 7: Verify the dashboard content
-    dashboard_url = "https://practicetestautomation.com/logged-in-successfully"
-    WebDriverWait(driver, 10).until(EC.url_to_be(dashboard_url))
+    # Step 5: Verify the user is redirected to the dashboard page
+    WebDriverWait(browser, 10).until(
+        EC.url_to_be(DASHBOARD_URL)
+    )
 
-    # Assertion: Verify the user is redirected to the dashboard page
-    assert driver.current_url == dashboard_url, "Dashboard URL mismatch"
+    # Step 6: Verify the dashboard displays user-specific information
+    assert browser.current_url == DASHBOARD_URL, "User is not redirected to the dashboard after login."
 
-    # Assertion: Verify the dashboard displays user-specific information
-    dashboard_content = WebDriverWait(driver, 10).until(
+    # Additional assertion: Verify a specific element on the dashboard (if available)
+    dashboard_content = WebDriverWait(browser, 10).until(
         EC.presence_of_element_located((By.TAG_NAME, "h1"))
     )
-    assert "Logged In Successfully" in dashboard_content.text, "Dashboard content mismatch"
+    assert "Logged In Successfully" in dashboard_content.text, "Dashboard content validation failed."
