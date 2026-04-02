@@ -1,1 +1,51 @@
 
+Slide 1: Title – Test Failure to Jira Automation System
+“Good [morning/afternoon], everyone.
+
+Today, I’ll walk you through our solution — Test Failure to Jira Automation System.
+This solution focuses on automating how test failures are handled and converted into actionable Jira updates, reducing manual effort and improving response time.”
+Slide 2: What Problem It Solves
+“Let’s first understand the problem we’re solving.
+Currently, QA engineers manually create Jira issues for every failed test run. This process is repetitive and time-consuming.
+At the same time, developers need immediate notification of failures. However, today this often involves manually commenting on related user stories or bugs, which delays response and increases dependency on QA.”
+Slide 3: Workflow Overview
+“To solve this, we designed a workflow powered by three specialized agents along with supporting tools.
+These agents work together in sequence:
+First, we analyze test failures from TestRail
+Then, we map them with existing Jira issues
+Finally, we take automated actions in Jira
+This creates a seamless, end-to-end automation pipeline from test failure to issue resolution.”
+Slide 4: Agent 1 – Test Failure Analyzer (TestRail)
+“The first agent is the Test Failure Analyzer.
+It connects to TestRail and fetches failed test cases using a dedicated tool.
+
+It extracts key details like test case title, status, and section.
+Most importantly, it filters only failed scenarios and prepares a structured output, which is passed to the next agent.”
+Slide 5: Agent 2 – Jira Similar Issue Mapping
+“The second agent focuses on identifying whether a similar issue already exists in Jira.
+It searches Jira using the test case name and maps failures to existing tickets.
+
+It also retrieves the current status of those issues — whether they are Done, In Progress, or To Do.
+This information is then passed to the final decision-making agent.”
+Slide 6: Agent 3 – Decision Automation Engine
+“The third agent is the decision engine, which automates actions in Jira.
+Based on the issue status:
+If an issue exists and is closed, it reopens the issue and adds a comment
+If an issue exists and is already open, it simply adds a comment
+If no issue exists, it creates a new bug automatically
+This ensures the right action is taken without any manual intervention.”
+Slide 7: Conclusion
+“To conclude:
+Today, QA engineers manually analyze failures, search Jira, and decide next steps, which is inefficient.
+
+Manual issue creation and lack of automated notifications slow down the overall response time.
+Our solution automates the complete flow — from detecting a test failure to taking the right action in Jira — enabling faster resolution and improved collaboration between QA and development teams.”
+Slide 8: Thank You
+“Thank you for your time.
+
+I’m happy to take any questions.”
+ 
+conclusion
+ 
+QA engineers must manually check failures, search Jira, and decide actions Automation of immediate developer notification when a test fails, so issues are addressed faster  Manual Jira issue creation for failed tests is time-consuming  Automates the complete flow from test failure to Jira action
+ 
